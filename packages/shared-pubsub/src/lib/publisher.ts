@@ -7,7 +7,12 @@ export const connectPubClient = (
   cb: (error: boolean, redis?: Redis) => void
 ) => {
   try {
-    redis = new Redis(process.env.REDIS_HOST)
+    redis = new Redis(
+      {
+        port: 6380, // Redis port
+        host: "127.0.0.1", // Redis host
+      }
+    )
     redis.once('connect', () => {
       error = false
       console.log('redis publisher connection established')

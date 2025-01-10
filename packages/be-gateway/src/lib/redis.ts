@@ -41,7 +41,10 @@ const HOUR = 60 * MIN
 const DAY = 23 * HOUR
 
 try {
-  redis = new Redis(process.env.REDIS_HOST, {
+  console.log('process.env.REDIS_HOST', process.env.REDIS_HOST)
+  redis = new Redis({
+    port: 6380, // Redis port
+    host: "127.0.0.1", // Redis host
     // required by npm package: bullmq
     maxRetriesPerRequest: null
   })
